@@ -8,6 +8,7 @@ import {LOGIN_ROUTE, REGISTRATION_ROUTE, SHOP_ROUTE} from "../utils/consts";
 import {login, registration} from "../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
+import {toJS} from "mobx";
 
 const Auth = observer(() => {
     const {user} = useContext(Context)
@@ -25,7 +26,9 @@ const Auth = observer(() => {
             } else {
                 data = await registration(email, password);
             }
-            user.setUser(user)
+            console.log('user ***', toJS(user));
+            console.log('data ***', toJS(data));
+            user.setUser(data);
             user.setIsAuth(true)
             history.push(SHOP_ROUTE)
         } catch (e) {

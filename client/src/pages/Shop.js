@@ -3,7 +3,6 @@ import {Container} from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import TypeBar from "../components/TypeBar";
-import BrandBar from "../components/BrandBar";
 import DeviceList from "../components/DeviceList";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
@@ -15,15 +14,14 @@ const Shop = observer(() => {
 
     useEffect(() => {
         fetchTypes().then(data => device.setTypes(data))
-        fetchBrands().then(data => device.setBrands(data))
-        fetchDevices(null, null, 1, 2).then(data => {
+        fetchDevices(null, null, 1, 3).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
     }, [])
 
     useEffect(() => {
-        fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page, 2).then(data => {
+        fetchDevices(device.selectedType.id, device.selectedBrand.id, device.page, 3).then(data => {
             device.setDevices(data.rows)
             device.setTotalCount(data.count)
         })
@@ -31,12 +29,12 @@ const Shop = observer(() => {
 
     return (
         <Container>
-            <Row className="mt-2">
+            <Row className="mt-3">
                 <Col md={3}>
                     <TypeBar/>
                 </Col>
                 <Col md={9}>
-                    <BrandBar/>
+                    {/*<BrandBar/>*/}
                     <DeviceList/>
                     <Pages/>
                 </Col>

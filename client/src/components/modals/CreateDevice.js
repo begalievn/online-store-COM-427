@@ -50,7 +50,7 @@ const CreateDevice = observer(({show, onHide}) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Добавить устройство
+                    Добавить блюдо
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -68,19 +68,19 @@ const CreateDevice = observer(({show, onHide}) => {
                             )}
                         </Dropdown.Menu>
                     </Dropdown>
-                    <Dropdown className="mt-2 mb-2">
-                        <Dropdown.Toggle>{device.selectedBrand.name || "Выберите тип"}</Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {device.brands.map(brand =>
-                                <Dropdown.Item
-                                    onClick={() => device.setSelectedBrand(brand)}
-                                    key={brand.id}
-                                >
-                                    {brand.name}
-                                </Dropdown.Item>
-                            )}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    {/*<Dropdown className="mt-2 mb-2">*/}
+                    {/*    <Dropdown.Toggle>{device.selectedBrand.name || "Выберите тип"}</Dropdown.Toggle>*/}
+                    {/*    <Dropdown.Menu>*/}
+                    {/*        {device.brands.map(brand =>*/}
+                    {/*            <Dropdown.Item*/}
+                    {/*                onClick={() => device.setSelectedBrand(brand)}*/}
+                    {/*                key={brand.id}*/}
+                    {/*            >*/}
+                    {/*                {brand.name}*/}
+                    {/*            </Dropdown.Item>*/}
+                    {/*        )}*/}
+                    {/*    </Dropdown.Menu>*/}
+                    {/*</Dropdown>*/}
                     <Form.Control
                         value={name}
                         onChange={e => setName(e.target.value)}
