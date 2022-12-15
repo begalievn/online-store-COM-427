@@ -25,6 +25,9 @@ So "Столовка" intended to answer for these questions.
 ### Favorite meals
 ![meals](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image2.png)
 
+### Meal details page
+![meal detail](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image4.png)
+
 ### Adding a meal
 ![adding meal](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image3.png)
 
