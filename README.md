@@ -17,5 +17,15 @@ The idea is to inform student of Ala-Too university about our dining hall.
 
 So "Столовка" intended to answer for these questions. 
 
+## Screenshots
+
+### MainPage
+![mainpage](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image1.png)
+
+### Favorite meals
+![meals](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image2.png)
+
+### Adding a meal
+![adding meal](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image3.png)
 
 
