@@ -1,6 +1,6 @@
 const uuid = require('uuid');
 const path = require('path');
-const { Device, DeviceInfo } = require('../models/models');
+const { Device, DeviceInfo, User, BasketDevice} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class DeviceController {
@@ -59,6 +59,73 @@ class DeviceController {
             include: [{ model: DeviceInfo, as: 'info'}]
         });
         return res.json(device);
+    }
+    
+    async addRating(req, res, next) {
+        try {
+            const { id, userId } = req.params;
+            console.log({id, userId});
+            const device = await Device.findOne({
+                where: { id }
+            });
+            
+            const user = await User.findOne({
+                where: { id: userId }
+            });
+            
+            if(device === null || user === null) {
+                throw new Error('Пользователь или блюдо не найдены');
+            }
+            let rating = device.rating + 1;
+            console.log({rating});
+            
+            let alreadyRated = await BasketDevice.findOne({
+                where: { basketId: userId, deviceId: id}
+            });
+            
+            if(alreadyRated) {
+                throw new Error('Пользователь уже рейтил');
+            }
+            
+            const newRating = await BasketDevice.create({ deviceId: id, basketId: userId });
+            
+            const result = await Device.update(
+                {
+                    rating
+                },
+                {
+                    where: { id }
+                }
+            )
+            return res.send(true);
+        } catch(e) {
+            next(ApiError.badRequest(e.message));
+        }
+    }
+    
+    async getFromBasket(req, res, next) {
+        const { id } = req.params;
+        
+        const user = await User.findOne({where: { id }});
+        
+        if(user === null) {
+            res.json('User not found');
+        }
+        const result = await BasketDevice.findAll({
+            where: {
+                basketId: id
+            }
+        })
+        
+        const meals = [];
+        
+        for await (let element of result) {
+            let id = element.deviceId;
+            let res = await Device.findOne({ where: { id }});
+            meals.push(res);
+        }
+        console.log(meals);
+        res.json(meals);
     }
 }
 

@@ -37,3 +37,13 @@ export const fetchOneDevice = async (id) => {
     const {data} = await $host.get('api/device/' + id)
     return data
 }
+
+export const addRating = async (mealId, userId) => {
+    const data = await $host.put('api/device/rating/' + mealId + '/user/' + userId);
+    return data;
+}
+
+export const getFromBasket = async (id) => {
+    const data = await $host.get('api/device/basket/' + id);
+    return data;
+}

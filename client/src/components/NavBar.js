@@ -22,6 +22,14 @@ const NavBar = observer(() => {
     
     console.log('navbar, user', toJS(user));
     
+    const handleFavoriteClick = () => {
+        if(!user?._user?.id) {
+            alert('Авторизуйтесь сначала');
+            return;
+        }
+        history.push(BASKET_ROUTE)
+    }
+    
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
@@ -31,7 +39,7 @@ const NavBar = observer(() => {
                     <Nav className="ml-auto" style={{color: 'white'}}>
                         <Button
                             variant={"outline-light"}
-                            onClick={() => history.push(BASKET_ROUTE)}
+                            onClick={handleFavoriteClick}
                         >
                             Избранные
                         </Button>

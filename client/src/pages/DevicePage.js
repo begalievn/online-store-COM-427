@@ -1,16 +1,33 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, Card, Col, Container, Image, Row} from "react-bootstrap";
 import bigStar from '../assets/bigStar.png'
 import {useParams} from 'react-router-dom'
-import {fetchOneDevice} from "../http/deviceAPI";
+import {addRating, fetchOneDevice} from "../http/deviceAPI";
+import {Context} from "../index";
+import {toJS} from "mobx";
 
 const DevicePage = () => {
+    const {user} = useContext(Context)
     const [device, setDevice] = useState({info: []})
     const {id} = useParams()
     useEffect(() => {
         fetchOneDevice(id).then(data => setDevice(data))
     }, [])
-
+    console.log({device});
+    console.log("user", toJS(user));
+    
+    const handleRatingClick = async () => {
+        if(!user?._user?.id) {
+            alert("Авторизуйтесь чтобы добавить в избранные");
+            return;
+        }
+        const result = await addRating(device.id, user?._user?.id);
+        if(result) {
+            let rating = device.rating + 1;
+            setDevice({...device, rating});
+            fetchOneDevice(id).then(data => setDevice(data))
+        }
+    }
     return (
         <Container className="mt-3">
             <Row>
@@ -21,8 +38,9 @@ const DevicePage = () => {
                     <Row className="d-flex flex-column align-items-center">
                         <h2>{device.name}</h2>
                         <div
+                            onClick={handleRatingClick}
                             className="d-flex align-items-center justify-content-center"
-                            style={{background: `url(${bigStar}) no-repeat center center`, width:240, height: 240, backgroundSize: 'cover', fontSize:64}}
+                            style={{background: `url(${bigStar}) no-repeat center center`, width:240, height: 240, backgroundSize: 'cover', fontSize:64, cursor: 'pointer'}}
                         >
                             {device.rating}
                         </div>
