@@ -9,11 +9,11 @@
 
 ## Idea of the project
 The idea is to inform student of Ala-Too university about our dining hall. 
-We have questions before taking some meal:
-What type of meal we have?
-What we can have for dessert?
-What salad we have?
-How much it costs?
+- We have questions before taking some meal:
+- What type of meal we have?
+- What we can have for dessert?
+- What salad we have?
+- How much it costs?
 
 So "Столовка" intended to answer for these questions. 
 
