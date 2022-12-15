@@ -5,7 +5,7 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png" alt="drawing" width="200"/>
 
-[Link to video](https://www.youtube.com/watch?v=r4kcbdgBvX8)
+[Link to video](https://youtu.be/XvCPIPqucZU)
 
 ## Idea of the project
 The idea is to inform student of Ala-Too university about our dining hall. 
@@ -17,6 +17,16 @@ The idea is to inform student of Ala-Too university about our dining hall.
 
 So "Столовка" intended to answer for these questions. 
 
+## Technologies used
+### Frontend
+- React 
+- MobX
+- Bootstrap
+
+### Backend
+- Express
+- PostgresSQL
+
 ## Screenshots
 
 ### MainPage
@@ -24,6 +34,9 @@ So "Столовка" intended to answer for these questions.
 
 ### Favorite meals
 ![meals](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image2.png)
+
+### Meal details page
+![meal detail](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image4.png)
 
 ### Adding a meal
 ![adding meal](https://github.com/begalievn/online-store-COM-427/blob/main/client/src/assets/image3.png)
