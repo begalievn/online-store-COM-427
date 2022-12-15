@@ -17,6 +17,16 @@ The idea is to inform student of Ala-Too university about our dining hall.
 
 So "Столовка" intended to answer for these questions. 
 
+## Technologies used
+### Frontend
+- React 
+- MobX
+- Bootstrap
+
+### Backend
+- Express
+- PostgresSQL
+
 ## Screenshots
 
 ### MainPage
