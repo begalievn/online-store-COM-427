@@ -8,7 +8,7 @@ import {observer} from "mobx-react-lite";
 const CreateDevice = observer(({show, onHide}) => {
     const {device} = useContext(Context)
     const [name, setName] = useState('')
-    const [price, setPrice] = useState(0)
+    const [price, setPrice] = useState()
     const [file, setFile] = useState(null)
     const [info, setInfo] = useState([])
 
@@ -68,30 +68,30 @@ const CreateDevice = observer(({show, onHide}) => {
                             )}
                         </Dropdown.Menu>
                     </Dropdown>
-                    {/*<Dropdown className="mt-2 mb-2">*/}
-                    {/*    <Dropdown.Toggle>{device.selectedBrand.name || "Выберите тип"}</Dropdown.Toggle>*/}
-                    {/*    <Dropdown.Menu>*/}
-                    {/*        {device.brands.map(brand =>*/}
-                    {/*            <Dropdown.Item*/}
-                    {/*                onClick={() => device.setSelectedBrand(brand)}*/}
-                    {/*                key={brand.id}*/}
-                    {/*            >*/}
-                    {/*                {brand.name}*/}
-                    {/*            </Dropdown.Item>*/}
-                    {/*        )}*/}
-                    {/*    </Dropdown.Menu>*/}
-                    {/*</Dropdown>*/}
+                    <Dropdown className="mt-2 mb-2">
+                        <Dropdown.Toggle>{device.selectedBrand.name || "Выберите день"}</Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {device.brands.map(brand =>
+                                <Dropdown.Item
+                                    onClick={() => device.setSelectedBrand(brand)}
+                                    key={brand.id}
+                                >
+                                    {brand.name}
+                                </Dropdown.Item>
+                            )}
+                        </Dropdown.Menu>
+                    </Dropdown>
                     <Form.Control
                         value={name}
                         onChange={e => setName(e.target.value)}
                         className="mt-3"
-                        placeholder="Введите название устройства"
+                        placeholder="Введите название блюда"
                     />
                     <Form.Control
                         value={price}
                         onChange={e => setPrice(Number(e.target.value))}
                         className="mt-3"
-                        placeholder="Введите стоимость устройства"
+                        placeholder="Введите стоимость блюда"
                         type="number"
                     />
                     <Form.Control
